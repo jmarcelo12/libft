@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	ft_strlcpy(void *dst, void *src, size_t n)
+size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 {
 	size_t x;
 	size_t y;
@@ -23,7 +23,7 @@ size_t	ft_strlcpy(void *dst, void *src, size_t n)
 	x = 0;
 	while (x < (n - 1) && src[x] != '\0')
 	{
-		((unsigned char *)dst)[x] = ((unsigned char *)src)[x]
+		((unsigned char *)dst)[x] = ((unsigned char *)src)[x];
 		x++;
 	}
 	dst[x] = '\0';

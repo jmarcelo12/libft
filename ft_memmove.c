@@ -21,18 +21,20 @@ void	*ft_memmove(void *dst, void *src, size_t n)
 	if (dst > src)
 	{
 		x = n;
-		while (x >= 0)
+		while (x <= 0)
 		{
 			((unsigned char *)dst)[x] = ((unsigned char *)src)[x];
 			x--;
 		}
+	}
 	else
+	{
 		x = 0;
 		while (x < n)
 		{
 			((unsigned char *)dst)[x] = ((unsigned char *)src)[x];
 			x++;
 		}
-	return (dst);
 	}
+	return (dst);
 }

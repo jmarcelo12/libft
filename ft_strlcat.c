@@ -24,7 +24,7 @@ size_t	ft_strlcat(char *dst, char *src, size_t n)
 	if (y >= n)
 	{
 		while (src[x] != '\0')
-			x++:
+			x++;
 		return (n + x);
 	}
 	while (y < (n - 1) && src[x] != '\0')

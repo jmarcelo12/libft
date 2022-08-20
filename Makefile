@@ -1,44 +1,49 @@
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
-LIB1	= ar -rcs
-LIB2	= ranlib
-RM		= /bin/rm -f
+NAME = libft.a
 
-NAME	= libft.a
+C_SOURCE = ft_memset.c   ft_strlcat.c     \
+           ft_bzero.c    ft_strnstr.c     \
+           ft_memcpy.c   ft_atoi.c        \
+           ft_memmove.c  ft_calloc.c      \
+           ft_memchr.c   ft_strdup.c      \
+           ft_memcmp.c   ft_substr.c      \
+           ft_strlen.c   ft_strjoin.c     \
+           ft_isalpha.c  ft_strtrim.c     \
+           ft_isdigit.c  ft_split.c       \
+           ft_isalnum.c  ft_itoa.c        \
+           ft_isascii.c  ft_strmapi.c     \
+           ft_isprint.c  ft_putchar_fd.c  \
+           ft_toupper.c  ft_putstr_fd.c   \
+           ft_tolower.c  ft_putendl_fd.c  \
+           ft_strchr.c   ft_putnbr_fd.c   \
+           ft_strrchr.c  ft_strncmp.c     \
+           ft_striteri.c ft_strlcpy.c     \
+           
+INCLUDE = libft.h
 
-INCLUDE	= libft.h
-SRCS	= ft_isascii.c ft_isprint.c ft_isalpha.c ft_isdigit.c ft_isalnum.c \
-			ft_tolower.c ft_toupper.c ft_strlen.c ft_strlcpy.c ft_strlcat.c \
-			ft_strchr.c ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_atoi.c \
-			ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_striteri.c \
-			ft_memchr.c ft_memcmp.c ft_strdup.c ft_calloc.c ft_itoa.c \
-			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_strmapi.c
-OBJS	= $(SRCS:.c=.o)
-BONUS_S	= ft_lstnew.c
-BONUS_O	= $(BONUS_S:.c=.o)
+OBJ = $(C_SOURCE:.c=.o)
 
-all:		$(NAME)
+CC = gcc
 
-$(NAME):	$(OBJS) $(INCLUDE)
-			$(LIB1) $(NAME) $(OBJS)
-			$(LIB2) $(NAME)
+CFLAGS = -Wall    \
+         -Wextra  \
+         -Werror  \
 
-bonus:		$(NAME) $(BONUS_O)
-			$(LIB1) $(NAME) $(BONUS_O)
-			$(LIB2) $(NAME)
+all: $(NAME)
 
-.c.o:
-			$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $(<:.c=.o)
+$(NAME): $(OBJ) $(INCLUDE)
+		ar -rcs $(NAME) $(OBJ)
+
+%.o: %.c $(INCLUDE)
+		$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-			$(RM) $(OBJS) $(BONUS_O)
+		rm -rf $(OBJ)
+		@echo "Libft cleaned"
 
-fclean:		clean
-			$(RM) $(NAME)
+fclean:	clean
+		rm -rf $(NAME)
+		@echo "Libft full cleaned"
 
-re:			fclean all
+re: fclean all
 
-rebonus:	fclean bonus
-
-.PHONY:		all clean fclean re bonus rebonus
+.PHONY: all clean fclean re
