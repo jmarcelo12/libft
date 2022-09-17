@@ -17,7 +17,7 @@ C_SOURCE = ft_memset.c   ft_strlcat.c     \
            ft_strchr.c   ft_putnbr_fd.c   \
            ft_strrchr.c  ft_strncmp.c     \
            ft_striteri.c ft_strlcpy.c     \
-           
+
 INCLUDE = libft.h
 
 OBJ = $(C_SOURCE:.c=.o)
