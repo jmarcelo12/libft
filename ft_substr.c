@@ -24,7 +24,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	if (start > ft_strlen(s))
 		return (ft_strdup(""));
-	while (s[count] != '\0' && count < len)
+	while (s[start + count] != '\0' && count < len)
 		count++;
 	str = (char *)malloc(sizeof(char) * (count + 1));
 	if (str == 0)
@@ -38,3 +38,17 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	return (str);
 }
+
+/*int main()
+{
+	int i = 0;
+	char *str = ft_strdup("0123456789");
+	char *s = ft_substr(str, 9, 10);
+	while(s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	write(1, "\n", 1);
+	return(0);
+}*/
