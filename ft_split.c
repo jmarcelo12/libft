@@ -84,4 +84,3 @@ char	**ft_split(char const *s, char c)
 	str = ft_fill(nbr_of_words, str, c, (char *)s);
 	return (str);
 }
-
